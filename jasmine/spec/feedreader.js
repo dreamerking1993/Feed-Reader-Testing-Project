@@ -118,6 +118,11 @@ $(function() {
             });    
         });
 
+        //afterEach to reload first entry
+        afterEach(function() {
+            loadFeed(0);
+        });        
+
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
