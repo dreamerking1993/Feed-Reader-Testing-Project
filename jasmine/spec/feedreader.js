@@ -107,7 +107,7 @@ $(function() {
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function(){
-        var feedTwo = {}, feedOne = {};
+        var feedTwo;
         beforeEach(function(done) {
             loadFeed(2, function(){
                 feedTwo = $('.feed').text();
