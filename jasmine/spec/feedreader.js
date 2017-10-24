@@ -109,22 +109,21 @@ $(function() {
     describe('New Feed Selection', function(){
         var feedTwo = {}, feedOne = {};
         beforeEach(function(done) {
-            loadFeed(2, done);
-            feedTwo = $('.feed').text();
-            window.feedTwo = feedTwo;
+            loadFeed(2, function(){
+                feedTwo = $('.feed').text();
+                //window.feedTwo = feedTwo;
+                loadFeed(1, function(){      //same thing as loadFeed(1,done);
+                    done();
+                });
+            });    
         });
-        beforeEach(function(done) {
-            loadFeed(1, done);
-            feedOne = $('.feed').text();
-            window.feedOne = feedOne;
-        });         
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
         it('content changes when new feed is loaded', function(done){
-            expect(feedTwo).not.toEqual(feedOne);
+            expect(feedTwo).not.toEqual($('.feed').text());
             done();
 
         }); 
